@@ -7,7 +7,7 @@ export default function App() {
  
     return (
       <>
-        <h1>Phonebook</h1>
+        <h1>Phonebook 7 homework</h1>
         <PhonebookForm/>
         
         <h2>Contacts</h2>
