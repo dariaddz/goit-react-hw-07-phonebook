@@ -1,15 +1,12 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useAddContactMutation } from 'contactsSlice';
 import toast, { Toaster } from 'react-hot-toast';
-import { addContact } from 'redux/slice';
 import PropTypes from 'prop-types';
 
 import st from './PhonebookForm.module.css';
 
-function PhonebookForm() {
-  const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts);
-
+function PhonebookForm({ contacts }) {
+  const [addContact] = useAddContactMutation();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -27,12 +24,15 @@ function PhonebookForm() {
     }
   };
 
-  const validationName = contacts.find(contact => contact.name === name);
+  const validationName =
+    contacts && contacts.find(contact => contact.name === name);
 
-  const validationNumber = contacts.find(contact => contact.number === number);
+  const validationNumber =
+    contacts && contacts.find(contact => contact.number === number);
 
   const onHandleSubmit = evt => {
     evt.preventDefault();
+
     if (validationName) {
       toast.error('You already have this name in your phonebook');
       return;
@@ -41,7 +41,7 @@ function PhonebookForm() {
       toast.error('You already have this number in your phonebook');
       return;
     }
-    dispatch(addContact({ name, number }));
+    addContact({ name, number });
     setName('');
     setNumber('');
   };

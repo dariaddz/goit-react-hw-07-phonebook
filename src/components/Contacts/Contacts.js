@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ContactItem from '../ContactItem';
-import Loader from 'components/Loader';
-import { useGetContactsQuery, useDeleteContactMutation } from 'contactsSlice';
 
-function Contacts() {
+import { useDeleteContactMutation } from 'contactsSlice';
+
+function Contacts({ contacts }) {
   // const filter = useSelector(state => state.contacts.filter);
 
-  const { data: contacts, isFetching } = useGetContactsQuery();
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
   // console.log(data);
@@ -24,7 +23,6 @@ function Contacts() {
   return (
     // <h2>Contacts</h2>
     <>
-      {isFetching && <Loader />}
       {contacts && (
         <ContactItem
           contacts={contacts}
