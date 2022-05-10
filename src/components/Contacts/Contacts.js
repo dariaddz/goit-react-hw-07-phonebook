@@ -1,39 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { deleteContact } from 'redux/slice';
-import { useSelector, useDispatch } from 'react-redux';
+// import { deleteContact } from 'redux/slice';
+// import { useSelector, useDispatch } from 'react-redux';
+import {
+  useGetContactsQuery,
+  // useDeleteContactMutation
+} from 'contactsSlice';
 import st from './Contacts.module.css';
 
 function Contacts({ id, name, number }) {
-  const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts);
-  const filter = useSelector(state => state.contacts.filter);
+  // const filter = useSelector(state => state.contacts.filter);
 
-  const filterContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
+  const {
+    data,
+    // error, isLoading
+  } = useGetContactsQuery();
+  // const { deleteContact } = useDeleteContactMutation;
+  console.log(data);
+  // const filterContacts = () => {
+  //   const normalizedFilter = filter.toLowerCase();
 
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
 
-  const contactsToShow = filterContacts();
+  // const contactsToShow = filterContacts();
 
   return (
+    // <h2>Contacts</h2>
     <ul className={st.list}>
-      {contactsToShow.map(({ id, name, number }) => (
+      {data.map(({ id, name, number }) => (
         <li className={st.element} key={id}>
           <span>{name}: </span>
-          <span>{number}</span>
-          <button
-            className={st.delete}
-            onClick={() => dispatch(deleteContact({ id }))}
-          >
+          <span className={st.phone}>{number}</span>
+          {/* <button className={st.delete} onClick={() => deleteContact(id)}>
             delete
-          </button>
+          </button> */}
         </li>
       ))}
     </ul>
+
+    // <ul className={st.list}>
+    //   {contactsToShow.map(({ id, name, number }) => (
+    //     <li className={st.element} key={id}>
+    //       <span>{name}: </span>
+    //       <span>{number}</span>
+    //       <button
+    //         className={st.delete}
+    //         onClick={() => dispatch(deleteContact({ id }))}
+    //       >
+    //         delete
+    //       </button>
+    //     </li>
+    //   ))}
+    // </ul>
   );
 }
 

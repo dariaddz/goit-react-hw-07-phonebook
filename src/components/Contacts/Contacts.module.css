@@ -1,5 +1,5 @@
 .list {
-  width: 300px;
+  width: 500px;
   padding-left: 0;
 }
 
@@ -8,6 +8,7 @@
   justify-content: space-between;
   margin-bottom: 10px;
 }
+
 .delete {
   margin-left: 15px;
   width: 50px;

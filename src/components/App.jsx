@@ -1,17 +1,18 @@
-import PhonebookForm from "./PhonebookForm";
+// import PhonebookForm from "./PhonebookForm";
 import Contacts from "./Contacts";
-import FilterField from "./Filter";
+// import FilterField from "./Filter";
 
 
 export default function App() {
  
+   
     return (
       <>
-        <h1>Phonebook 7 homework</h1>
-        <PhonebookForm/>
+        <h1>Phonebook</h1>
+        {/* <PhonebookForm/> */}
         
         <h2>Contacts</h2>
-        <FilterField/>
+        {/* <FilterField/> */}
         <Contacts/>
                   
       </>
