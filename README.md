@@ -1,2 +1,2 @@
 # https://goit.ua/ FullStack Online Course 
-React module homework - Asynk Redux
+React module homework - Async Redux
