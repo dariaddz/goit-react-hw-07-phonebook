@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import st from './Filter.module.css';
-import { filterContacts } from 'redux/slice';
+import { filterContacts } from 'redux/FilterSlice';
 
 const FilterField = () => {
-  const filter = useSelector(state => state.contacts.filter);
   const dispatch = useDispatch();
 
   function changeFilter(evt) {
@@ -16,7 +15,7 @@ const FilterField = () => {
   return (
     <div className={st.filter}>
       <label>Find contacts by name </label>
-      <input type="text" value={filter} onChange={changeFilter} />
+      <input type="text" onChange={changeFilter} />
     </div>
   );
 };

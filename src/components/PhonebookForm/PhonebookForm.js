@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAddContactMutation } from 'contactsSlice';
+import { useAddContactMutation } from 'redux/contactsApi';
 import toast, { Toaster } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 

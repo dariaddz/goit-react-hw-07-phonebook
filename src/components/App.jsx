@@ -1,21 +1,21 @@
 import PhonebookForm from "./PhonebookForm";
 import Contacts from "./Contacts";
-// import FilterField from "./Filter";
-import { useGetContactsQuery } from 'contactsSlice';
-import Loader from 'components/Loader';
+import FilterField from "./Filter";
 
 export default function App() {
  
-    const { data: contacts, isFetching } = useGetContactsQuery();
+   
     return (
       <>
-         {isFetching && <Loader />}
+         {/* {isFetching && <Loader />} */}
         <h1>Phonebook</h1>
-        <PhonebookForm contacts={contacts}/>
+        <PhonebookForm
+        />
         
         <h2>Contacts</h2>
-        {/* <FilterField/> */}
-        <Contacts contacts={contacts}/>
+        <FilterField/>
+        <Contacts
+        />
                   
       </>
     )

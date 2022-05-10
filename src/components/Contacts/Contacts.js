@@ -1,35 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ContactItem from '../ContactItem';
+// import { useSelector } from 'react-redux';
+import Loader from 'components/Loader';
+import { useGetContactsQuery } from 'redux/contactsApi';
+import st from './Contacts.module.css';
 
-import { useDeleteContactMutation } from 'contactsSlice';
+function Contacts() {
+  //   // const filterValue = useSelector(state => state.filter.value);
+  const { data, isFetching } = useGetContactsQuery();
 
-function Contacts({ contacts }) {
-  // const filter = useSelector(state => state.contacts.filter);
+  //   console.log('data', data);
 
-  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
+  // const contactsToShow = () => {
+  //   if (data && filterValue) {
+  //     data.filter(({ name }) =>
+  //       name.toLowerCase().includes(filterValue.toLowerCase())
+  //     );
+  // //   }
+  // // };
 
-  // console.log(data);
-  // const filterContacts = () => {
-  //   const normalizedFilter = filter.toLowerCase();
-
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
-
-  // const contactsToShow = filterContacts();
+  // // console.log('contactsToShow', contactsToShow());
 
   return (
-    // <h2>Contacts</h2>
     <>
-      {contacts && (
-        <ContactItem
-          contacts={contacts}
-          onDelete={deleteContact}
-          deleting={isDeleting}
-        />
-      )}
+      {isFetching && <Loader />}
+      <table className={st.table}>
+        <tbody>
+          {data?.map(contact => {
+            return <ContactItem key={contact.id} contact={contact} />;
+          })}
+        </tbody>
+      </table>
     </>
   );
 }
