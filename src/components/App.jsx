@@ -7,7 +7,6 @@ export default function App() {
    
     return (
       <>
-         {/* {isFetching && <Loader />} */}
         <h1>Phonebook</h1>
         <PhonebookForm
         />

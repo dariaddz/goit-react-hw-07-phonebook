@@ -1,17 +1,8 @@
-
-
 .element {
-    /* display: inline-block; */
-    /* justify-content: space-between; */
-
    height: 40px;
 }
-/* .phone{
-    margin-left: 20px
-} */
-.delete {
 
-    /* margin-left: 30px; */
+.delete {
     min-width: 50px;
     border: 2px solid darkblue;
     border-radius: 3px;
