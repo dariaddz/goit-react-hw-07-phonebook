@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import st from './PhonebookForm.module.css';
 
 function PhonebookForm({ contacts }) {
-  const [addContact] = useAddContactMutation();
+  const [addContact, isSuccess] = useAddContactMutation();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -42,6 +42,9 @@ function PhonebookForm({ contacts }) {
       return;
     }
     addContact({ name, number });
+
+    isSuccess && toast.success('New contact was added to you phonebook');
+
     setName('');
     setNumber('');
   };
